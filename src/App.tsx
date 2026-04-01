@@ -24,7 +24,8 @@ export default function App() {
   const [copied, setCopied] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const apiEndpoint = `${window.location.origin}/api/split`;
+  const apiBaseUrl = (process.env.APP_URL || window.location.origin).replace(/\/$/, '');
+  const apiEndpoint = `${apiBaseUrl}/api/split`;
   const curlExample = `curl -X POST ${apiEndpoint} \\
   -F "image=@your_storyboard.png"`;
 
